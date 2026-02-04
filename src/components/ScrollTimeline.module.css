@@ -1,0 +1,153 @@
+/**
+ * Code by ~Xipzer
+ */
+
+.timeline {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.track {
+  width: 2px;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(180deg, var(--accent-secondary), #a78bfa);
+  border-radius: 1px;
+}
+
+.markers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.marker {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(10, 10, 18, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.marker:hover {
+  border-color: var(--accent-secondary);
+  transform: scale(1.1);
+}
+
+.marker:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-8px);
+  pointer-events: auto;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.marker.passed .label {
+  color: var(--text-secondary);
+}
+
+.marker.active {
+  background: rgba(139, 139, 255, 0.2);
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 20px rgba(139, 139, 255, 0.3);
+}
+
+.marker.active .label {
+  color: var(--accent-secondary);
+}
+
+.tooltip {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  padding: 6px 12px;
+  background: rgba(10, 10, 18, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-primary);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease;
+  margin-right: 8px;
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    right: 12px;
+    gap: 6px;
+  }
+
+  .track {
+    height: 80px;
+  }
+
+  .markers {
+    gap: 8px;
+  }
+
+  .marker {
+    width: 24px;
+    height: 24px;
+  }
+
+  .label {
+    font-size: 10px;
+  }
+
+  .tooltip {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    right: 8px;
+  }
+
+  .track {
+    display: none;
+  }
+
+  .marker {
+    width: 20px;
+    height: 20px;
+  }
+
+  .label {
+    font-size: 9px;
+  }
+}

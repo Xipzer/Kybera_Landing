@@ -1,0 +1,556 @@
+/**
+ * Code by ~Xipzer
+ */
+
+.docs {
+  min-height: 100vh;
+  padding: calc(100px + env(safe-area-inset-top, 0px)) 0 80px;
+  position: relative;
+}
+
+.docsContainer {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 40px;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: var(--text-primary);
+}
+
+.pageHeader {
+  margin-bottom: 56px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pageTitle {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.pageSubtitle {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.toc {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  margin-bottom: 56px;
+}
+
+.tocTitle {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.tocList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tocLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  padding: 4px 0;
+}
+
+.tocLink:hover {
+  color: var(--accent-secondary);
+}
+
+.tocNumber {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-family: var(--font-mono, monospace);
+  min-width: 24px;
+}
+
+.section {
+  margin-bottom: 64px;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.sectionAnchor {
+  scroll-margin-top: 100px;
+}
+
+.sectionSubtitle {
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.sectionText {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+.sectionText strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 24px;
+}
+
+.featureItem {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  padding: 14px 18px;
+  background: rgba(18, 18, 31, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.featureItem:hover {
+  border-color: var(--border-accent);
+  background: rgba(139, 139, 255, 0.03);
+}
+
+.featureIcon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139, 139, 255, 0.1) 0%, rgba(167, 139, 250, 0.1) 100%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  color: var(--accent-secondary);
+}
+
+.featureContent h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.featureContent p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.featureItemRed {
+  composes: featureItem;
+}
+
+.featureItemRed:hover {
+  border-color: rgba(255, 77, 77, 0.4);
+  background: rgba(255, 77, 77, 0.03);
+}
+
+.featureIconRed {
+  composes: featureIcon;
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(230, 57, 70, 0.1) 100%);
+  border-color: rgba(255, 77, 77, 0.25);
+  color: #ff4d4d;
+}
+
+.codeBlock {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono, 'SF Mono', 'Fira Code', monospace);
+  font-size: 14px;
+  color: var(--accent-secondary);
+  margin: 16px 0;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.codeBlockRed {
+  composes: codeBlock;
+  border-color: rgba(255, 77, 77, 0.25);
+  color: #ff4d4d;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.copyBtn:hover {
+  color: var(--accent-secondary);
+  background: var(--accent-subtle);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 24px 0;
+}
+
+.step {
+  display: flex;
+  gap: 16px;
+  position: relative;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139, 139, 255, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-secondary);
+  font-family: var(--font-mono, monospace);
+}
+
+.stepNumberRed {
+  composes: stepNumber;
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.15) 0%, rgba(230, 57, 70, 0.15) 100%);
+  border-color: rgba(255, 77, 77, 0.25);
+  color: #ff4d4d;
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: 2px;
+}
+
+.stepContent h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.stepContent p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.stepConnector {
+  position: absolute;
+  left: 18px;
+  top: 42px;
+  bottom: -20px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--border-accent), transparent);
+  opacity: 0.4;
+}
+
+.stepConnectorRed {
+  composes: stepConnector;
+  background: linear-gradient(180deg, rgba(255, 77, 77, 0.25), transparent);
+}
+
+.chainGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.chainItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(18, 18, 31, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.chainItem:hover {
+  border-color: var(--border-accent);
+}
+
+.chainLogo {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.connectionBox {
+  background: rgba(18, 18, 31, 0.7);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 77, 77, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  margin: 24px 0;
+}
+
+.connectionBoxTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.connectionBoxText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.connectionFormat {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 77, 77, 0.2);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono, 'SF Mono', 'Fira Code', monospace);
+  font-size: 13px;
+  color: #ff8a80;
+  overflow-x: auto;
+}
+
+.callout {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(139, 139, 255, 0.05);
+  border: 1px solid rgba(139, 139, 255, 0.2);
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+}
+
+.calloutRed {
+  composes: callout;
+  background: rgba(255, 77, 77, 0.05);
+  border-color: rgba(255, 77, 77, 0.2);
+}
+
+.calloutIcon {
+  flex-shrink: 0;
+  color: var(--accent-secondary);
+  margin-top: 2px;
+}
+
+.calloutIconRed {
+  composes: calloutIcon;
+  color: #ff4d4d;
+}
+
+.calloutText {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.calloutText strong {
+  color: var(--text-primary);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 64px 0;
+}
+
+.docsCta {
+  text-align: center;
+  padding: 48px 32px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  margin-top: 64px;
+}
+
+.docsCtaTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.docsCtaText {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.docsCtaButtons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.troubleList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.troubleItem {
+  padding: 18px 20px;
+  background: rgba(18, 18, 31, 0.4);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}
+
+.troubleItem h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.troubleItem p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.troubleItem code {
+  font-family: var(--font-mono, monospace);
+  font-size: 13px;
+  padding: 2px 6px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  color: var(--accent-secondary);
+}
+
+@media (max-width: 768px) {
+  .docs {
+    padding-top: 80px;
+  }
+
+  .pageHeader {
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+  }
+
+  .toc {
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+
+  .section {
+    margin-bottom: 48px;
+  }
+
+  .sectionTitle {
+    font-size: 24px;
+  }
+
+  .chainGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .connectionBox {
+    padding: 20px;
+  }
+
+  .docsCta {
+    padding: 32px 20px;
+  }
+
+  .docsCtaTitle {
+    font-size: 20px;
+  }
+
+  .divider {
+    margin: 48px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .chainGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .codeBlock, .codeBlockRed {
+    font-size: 12px;
+    padding: 10px 14px;
+  }
+
+  .connectionFormat {
+    font-size: 11px;
+  }
+
+  .docsCtaButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,457 @@
+/**
+ * Code by ~Xipzer
+ */
+
+.openclaw {
+  --oc-coral: #ff4d4d;
+  --oc-coral-mid: #e63946;
+  --oc-coral-dark: #991b1b;
+  --oc-coral-subtle: rgba(255, 77, 77, 0.1);
+  --oc-coral-border: rgba(255, 77, 77, 0.25);
+  --oc-coral-glow: rgba(255, 77, 77, 0.15);
+  --oc-cyan: #00e5cc;
+
+  position: relative;
+  overflow: visible;
+}
+
+.ambientGlow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 77, 77, 0.06) 0%,
+    rgba(230, 57, 70, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.heroBlock {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 48px;
+}
+
+.heroText {
+  flex: 1;
+}
+
+.crabContainer {
+  flex: 0 0 280px;
+  height: 280px;
+  position: relative;
+}
+
+.crabFallback {
+  width: 100%;
+  height: 100%;
+}
+
+.sectionTitle {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, #ff4d4d 0%, #ff8a80 30%, #e63946 70%, #ff4d4d 100%);
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift-red 6s ease infinite;
+}
+
+@keyframes gradient-shift-red {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.sectionSubtitle {
+  font-size: clamp(15px, 2vw, 18px);
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: var(--oc-coral-subtle);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: 100px;
+  color: var(--oc-coral);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 64px;
+}
+
+.capCard {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s ease;
+}
+
+.capCard:hover {
+  border-color: rgba(255, 77, 77, 0.5);
+  box-shadow: 0 0 40px var(--oc-coral-glow);
+}
+
+.capCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--oc-coral), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.capCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 77, 77, 0.08) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.capCard:hover::before {
+  opacity: 1;
+}
+
+.capCard:hover::after {
+  opacity: 1;
+}
+
+.cardGlow {
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 100px;
+  background: radial-gradient(ellipse, rgba(255, 77, 77, 0.15) 0%, transparent 70%);
+  filter: blur(20px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.capCard:hover .cardGlow {
+  opacity: 1;
+}
+
+.capIcon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.1) 0%, rgba(230, 57, 70, 0.1) 100%);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: var(--radius-md);
+  color: var(--oc-coral);
+  margin-bottom: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.capCard:hover .capIcon {
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.25) 0%, rgba(230, 57, 70, 0.25) 100%);
+  box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
+  border-color: rgba(255, 77, 77, 0.5);
+}
+
+.capTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.capDescription {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.quickStart {
+  position: relative;
+  background: rgba(18, 18, 31, 0.7);
+  backdrop-filter: blur(30px);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: var(--radius-xl);
+  padding: 48px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.quickStart:hover {
+  border-color: rgba(255, 77, 77, 0.5);
+}
+
+.quickStartGlow {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 200px;
+  background: radial-gradient(ellipse, rgba(255, 77, 77, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.quickStartHeader {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.quickStartTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.quickStartSubtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+
+.stepNumber {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(255, 77, 77, 0.15) 0%, rgba(230, 57, 70, 0.15) 100%);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--oc-coral);
+  font-family: var(--font-mono, monospace);
+}
+
+.stepContent {
+  flex: 1;
+  padding-top: 4px;
+}
+
+.stepTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.stepDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.codeBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--oc-coral-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono, 'SF Mono', 'Fira Code', monospace);
+  font-size: 13px;
+  color: var(--oc-coral);
+  width: fit-content;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copyBtn:hover {
+  color: var(--oc-coral);
+  background: var(--oc-coral-subtle);
+}
+
+.stepConnector {
+  position: absolute;
+  left: 22px;
+  top: 52px;
+  bottom: -28px;
+  width: 1px;
+  background: linear-gradient(180deg, var(--oc-coral-border), transparent);
+  opacity: 0.5;
+}
+
+.quickStartFooter {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 77, 77, 0.15);
+}
+
+.docsLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--oc-coral);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.docsLink:hover {
+  gap: 12px;
+  color: #ff8a80;
+}
+
+@media (max-width: 1024px) {
+  .capabilities {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .heroBlock {
+    flex-direction: column;
+    text-align: center;
+    gap: 24px;
+  }
+
+  .heroText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .sectionSubtitle {
+    text-align: center;
+  }
+
+  .crabContainer {
+    flex: 0 0 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .capabilities {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .capCard {
+    padding: 24px 20px;
+  }
+
+  .capIcon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+  }
+
+  .capIcon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .capTitle {
+    font-size: 18px;
+  }
+
+  .capDescription {
+    font-size: 14px;
+  }
+
+  .quickStart {
+    padding: 32px 20px;
+  }
+
+  .quickStartTitle {
+    font-size: 22px;
+  }
+
+  .step {
+    gap: 14px;
+  }
+
+  .stepNumber {
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
+  }
+
+  .stepConnector {
+    left: 18px;
+  }
+
+  .codeBlock {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
+
+  .crabContainer {
+    flex: 0 0 180px;
+    height: 180px;
+  }
+
+  .heroBlock {
+    gap: 16px;
+  }
+}

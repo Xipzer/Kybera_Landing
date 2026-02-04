@@ -1,0 +1,119 @@
+/**
+ * Code by ~Xipzer
+ */
+
+.section {
+  display: flex;
+  justify-content: center;
+  padding: 0 0 80px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 139, 255, 0.2);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.badge:hover {
+  border-color: rgba(139, 139, 255, 0.5);
+  box-shadow: 0 0 40px rgba(139, 139, 255, 0.15), 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(139, 139, 255, 0.06) 0%, transparent 50%, rgba(167, 139, 250, 0.06) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.badge:hover .glow {
+  opacity: 1;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+  padding: 4px 10px;
+  background: rgba(139, 139, 255, 0.15);
+  border: 1px solid rgba(139, 139, 255, 0.25);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.address {
+  font-family: var(--font-mono, 'SF Mono', 'Fira Code', monospace);
+  font-size: 14px;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
+}
+
+.badge:hover .address {
+  color: var(--text-primary);
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--accent-subtle);
+  border: 1px solid rgba(139, 139, 255, 0.2);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.badge:hover .copyBtn {
+  background: rgba(139, 139, 255, 0.2);
+  border-color: rgba(139, 139, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0 0 60px;
+  }
+
+  .badge {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    max-width: 100%;
+  }
+
+  .address {
+    font-size: 11px;
+    word-break: break-all;
+    text-align: center;
+  }
+
+  .copyBtn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .address {
+    font-size: 10px;
+  }
+}
