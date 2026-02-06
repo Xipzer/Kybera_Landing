@@ -83,6 +83,10 @@
   margin-bottom: 60px;
 }
 
+.githubBtn {
+  gap: 8px;
+}
+
 .stats {
   display: flex;
   align-items: center;

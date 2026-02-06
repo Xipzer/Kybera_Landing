@@ -105,7 +105,15 @@
 }
 
 .actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
   margin-bottom: 40px;
+}
+
+.githubBtn {
+  gap: 8px;
 }
 
 .features {

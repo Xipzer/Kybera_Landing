@@ -94,6 +94,31 @@
   width: 100%;
 }
 
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s ease;
+}
+
+.githubLink:hover {
+  color: var(--text-primary);
+  background: var(--accent-subtle);
+  border-color: var(--border-accent);
+}
+
 .launchBtn {
   padding: 12px 24px;
   font-size: 14px;

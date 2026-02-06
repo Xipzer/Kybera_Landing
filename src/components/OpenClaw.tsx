@@ -3,9 +3,10 @@
  */
 
 import { motion } from 'framer-motion'
-import { Terminal, Zap, Shield, Brain, ArrowRight } from 'lucide-react'
+import { Terminal, Zap, Shield, Brain, ArrowRight, Github } from 'lucide-react'
 import { Suspense, lazy } from 'react'
 import { Link } from 'react-router-dom'
+import { OPENCLAW_GITHUB_URL } from '../constants'
 import { staggerContainer, fadeInUp, springHover } from '../utils/animations'
 import CopyButton from './CopyButton'
 import styles from './OpenClaw.module.css'
@@ -153,13 +154,24 @@ const OpenClaw = () => {
           </div>
 
           <div className={styles.quickStartFooter}>
-            <Link
-              to="/docs#openclaw-setup"
-              className={styles.docsLink}
-            >
-              View full documentation
-              <ArrowRight size={16} />
-            </Link>
+            <div className={styles.footerLinks}>
+              <Link
+                to="/docs#openclaw-setup"
+                className={styles.docsLink}
+              >
+                View full documentation
+                <ArrowRight size={16} />
+              </Link>
+              <a
+                href={OPENCLAW_GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={styles.githubLink}
+              >
+                <Github size={16} />
+                View on GitHub
+              </a>
+            </div>
           </div>
         </motion.div>
       </div>

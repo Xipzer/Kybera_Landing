@@ -3,9 +3,9 @@
  */
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Github } from 'lucide-react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { APP_URL, SCROLL_DELAY_MS } from '../constants'
+import { APP_URL, GITHUB_APP_URL, SCROLL_DELAY_MS } from '../constants'
 import styles from './Navbar.module.css'
 
 const Navbar = () => {
@@ -48,8 +48,18 @@ const Navbar = () => {
           <Link to="/docs" className={styles.navLink}>Docs</Link>
         </div>
 
-        <a 
-          href={APP_URL} 
+        <div className={styles.navActions}>
+          <a
+            href={GITHUB_APP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+            aria-label="GitHub"
+          >
+            <Github size={20} />
+          </a>
+          <a 
+            href={APP_URL} 
           className={`btn-primary ${styles.launchBtn}`}
           target="_blank"
           rel="noopener noreferrer"
@@ -57,6 +67,7 @@ const Navbar = () => {
           Launch App
           <ArrowUpRight size={18} />
         </a>
+        </div>
       </div>
     </motion.nav>
   )

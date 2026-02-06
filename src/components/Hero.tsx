@@ -3,8 +3,9 @@
  */
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight, Sparkles, Shield, Zap, TrendingUp, AlertTriangle } from 'lucide-react'
+import { ArrowUpRight, Sparkles, Shield, Zap, TrendingUp, AlertTriangle, Github } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { GITHUB_APP_URL } from '../constants'
 import styles from './Hero.module.css'
 
 const Hero = () => {
@@ -62,6 +63,15 @@ const Hero = () => {
           <Link to="/docs" className="btn-secondary">
             Documentation
           </Link>
+          <a 
+            href={GITHUB_APP_URL}
+            className={`btn-secondary ${styles.githubBtn}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Github size={18} />
+            Star on GitHub
+          </a>
         </motion.div>
 
         <motion.div 

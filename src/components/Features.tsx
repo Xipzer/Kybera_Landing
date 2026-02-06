@@ -9,7 +9,7 @@ import {
   ArrowLeftRight, 
   Wallet, 
   MessageSquare, 
-  Palette 
+  Code2 
 } from 'lucide-react'
 import { staggerContainer, fadeInUp, springHover } from '../utils/animations'
 import styles from './Features.module.css'
@@ -46,10 +46,10 @@ const features = [
     highlight: "Full Control"
   },
   {
-    icon: Palette,
-    title: "Beautiful Design",
-    description: "Elegant glassmorphism UI with light, dark, and custom themes. Fully responsive design that looks stunning on desktop and mobile.",
-    highlight: "Customizable"
+    icon: Code2,
+    title: "100% Open Source",
+    description: "Every line of code is public on GitHub. Audit the security yourself, contribute features, or fork it and make it your own. No black boxes.",
+    highlight: "MIT Licensed"
   }
 ]
 

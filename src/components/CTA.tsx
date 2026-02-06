@@ -3,8 +3,8 @@
  */
 
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
-import { APP_URL } from '../constants'
+import { ArrowUpRight, Github } from 'lucide-react'
+import { APP_URL, GITHUB_APP_URL } from '../constants'
 import styles from './CTA.module.css'
 
 const CTA = () => {
@@ -51,6 +51,15 @@ const CTA = () => {
                 Launch App
                 <ArrowUpRight size={20} />
               </a>
+              <a
+                href={GITHUB_APP_URL}
+                className={`btn-secondary ${styles.githubBtn}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github size={18} />
+                View Source
+              </a>
             </div>
 
             <div className={styles.features}>
@@ -65,6 +74,10 @@ const CTA = () => {
               <div className={styles.feature}>
                 <span className={styles.checkmark}>&#10003;</span>
                 No seed phrase required
+              </div>
+              <div className={styles.feature}>
+                <span className={styles.checkmark}>&#10003;</span>
+                100% Open Source
               </div>
             </div>
           </div>
